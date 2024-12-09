@@ -67,3 +67,21 @@ text_splitter = RecursiveCharacterTextSplitter(chunk_size=1000, chunk_overlap=10
 split_documents = text_splitter.split_documents(all_documents)
 ```
 이 코드는 PDF 및 CSV 파일을 로드한 후, 텍스트를 지정된 크기로 분할하여 검색 성능을 최적화합니다. chunk_size와 chunk_overlap은 문서 텍스트의 분할 방식을 조정합니다.
+
+### 4. 벡터스토어 및 검색기 생성
+문서의 임베딩을 생성하고, 이를 FAISS 벡터스토어에 저장하여 빠르게 검색할 수 있도록 합니다.
+
+```python
+from langchain.embeddings import OpenAIEmbeddings
+from langchain.vectorstores import FAISS
+
+# OpenAI 임베딩 모델을 사용하여 문서 임베딩 생성
+embeddings = OpenAIEmbeddings()
+
+# FAISS 벡터스토어에 임베딩 저장
+vectorstore = FAISS.from_documents(documents=split_documents, embedding=embeddings)
+
+# 벡터스토어에서 검색할 수 있는 retriever 생성
+retriever = vectorstore.as_retriever()
+```
+

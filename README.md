@@ -48,3 +48,22 @@ load_dotenv(dotenv_path=env_path)
 ```python
 api_key = os.getenv('OPENAI_API_KEY')
 ```
+
+### 3. 문서 로드 및 분할
+문서를 로드하고 텍스트를 분할하는 부분을 설정합니다. PDF 및 CSV 파일을 처리하며, 텍스트를 분할하여 검색을 최적화합니다.
+
+```python
+from langchain.document_loaders import PyMuPDFLoader, CSVLoader
+from langchain.text_splitter import RecursiveCharacterTextSplitter
+
+def load_and_classify_documents():
+    all_documents = []
+    # 문서 로드 및 메타 데이터 추가
+    # 예: PDF 및 CSV 파일 로드 후 메타데이터 삽입
+    # ...
+    return all_documents
+
+text_splitter = RecursiveCharacterTextSplitter(chunk_size=1000, chunk_overlap=100)
+split_documents = text_splitter.split_documents(all_documents)
+```
+이 코드는 PDF 및 CSV 파일을 로드한 후, 텍스트를 지정된 크기로 분할하여 검색 성능을 최적화합니다. chunk_size와 chunk_overlap은 문서 텍스트의 분할 방식을 조정합니다.

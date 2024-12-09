@@ -39,13 +39,13 @@ from dotenv import load_dotenv
 import os
 ```
 
-## .env 파일 경로 설정
+## 3.env 파일 경로 설정
 ```python
 env_path = '/content/drive/MyDrive/env'  # .env 파일의 경로를 설정해주세요.
 load_dotenv(dotenv_path=env_path)
 ```
 
-## API 키 로드
+## 4.API 키 로드
 ```python
 api_key = os.getenv('OPENAI_API_KEY')
 ```

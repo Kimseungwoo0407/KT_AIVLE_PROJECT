@@ -18,3 +18,29 @@ pip install openai==0.28
 pip install tiktoken
 pip install faiss-cpu
 ```
+
+## 2. API 키 설정
+
+OpenAI API 키와 Langchain API 키를 환경 변수로 설정합니다. `.env` 파일을 생성하여 아래와 같이 작성합니다.
+
+```plaintext
+OPENAI_API_KEY=본인 키 입력
+LANGCHAIN_TRACING_V2=true
+LANGCHAIN_ENDPOINT=https://api.smith.langchain.com
+LANGCHAIN_API_KEY=본인 키 입력
+LANGCHAIN_PROJECT=Projects
+```
+
+- 이후, `.env` 파일을 로드하여 환경 변수를 설정할 수 있습니다. 
+- 아래의 Python 코드를 사용하여 `.env` 파일을 로드하고 API 키를 사용할 수 있도록 설정합니다.
+
+```python
+from dotenv import load_dotenv
+import os
+```
+# .env 파일 경로 설정
+env_path = '/content/drive/MyDrive/env'  # .env 파일의 경로를 설정해주세요.
+load_dotenv(dotenv_path=env_path)
+
+# API 키 로드
+api_key = os.getenv('OPENAI_API_KEY')
